@@ -1,0 +1,44 @@
+accelerator:
+  displayName: Spring Rest API 
+  description: Files to get started creating a simple spring rest api
+  tags:
+    - spring
+    - rest api
+  options:
+    - name: appName
+      label: App Name
+      display: true
+      defaultValue: "change-app-name"
+      required: true
+      inputType: text
+    - name: imageRegistryPath
+      label: Registry path
+      display: true
+      defaultValue: "change-registry-path"
+      required: true
+      inputType: text
+    - name: gitRepoName
+      label: Git repo name or organization
+      display: true
+      defaultValue: "change-git-repo"
+      required: true
+      inputType: text
+    - name: branchName
+      label: Git branch name
+      display: true
+      defaultValue: "change-git-branch"
+      required: true
+      inputType: text
+engine:
+  type: Chain
+  transformations:
+  - type: Include
+    patterns: ['*']
+  - type: ReplaceText
+    substitutions:
+      - text: sample-go-api
+        with: "#projectName"
+      - text: git-repo-name
+        with: "#gitRepoName"
+      - text: branch-name
+        with: "#branchName"

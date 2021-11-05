@@ -1,0 +1,15 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: change-app-name
+  labels:
+    apps.tanzu.vmware.com/workload-type: change-supply-chain
+spec:
+  params:
+    - name: run-image
+      value: gcr.io/taaron-1/change-app-name
+  source:
+    git:
+      url: https://github.com/git-repo-name/change-app-name
+      ref:
+        branch: branch-name
