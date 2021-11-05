@@ -8,7 +8,7 @@ public class Change-App-Name-Controller {
 
 	@RequestMapping("/")
 	public String index() {
-		return "Greetings from Spring Boot + Tanzu + VMware!";
+		return "Getting started api";
 	}
 
 }

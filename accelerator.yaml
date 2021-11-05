@@ -1,5 +1,5 @@
 accelerator:
-  displayName: Spring Rest API 2
+  displayName: Spring Rest API 3
   description: Files to get started creating a simple spring rest api
   tags:
     - spring
@@ -11,7 +11,13 @@ accelerator:
       defaultValue: "change-app-name"
       required: true
       inputType: text
-    - name: imageRegistryPath
+    - name: className
+      label: Class Name
+      display: true
+      defaultValue: "Change-app-name"
+      required: true
+      inputType: text
+    - name: registryPath
       label: Registry path
       display: true
       defaultValue: "change-registry-path"
@@ -36,9 +42,15 @@ engine:
     patterns: ['**']
   - type: ReplaceText
     substitutions:
-      - text: sample-go-api
-        with: "#projectName"
-      - text: git-repo-name
+      - text: change-app-name
+        with: "#appName"
+      - text: change-app-package
+        with: "#appName"
+      - text: change-git-repo
         with: "#gitRepoName"
-      - text: branch-name
+      - text: change-branch-name
         with: "#branchName"
+      - text: change-registry-path
+        with: "#registryPath"
+      - text: Change-App-Name-
+        with: "#className"
