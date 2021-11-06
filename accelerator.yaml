@@ -1,5 +1,5 @@
 accelerator:
-  displayName: Spring Rest API 3
+  displayName: Spring Rest API 5
   description: Files to get started creating a simple spring rest api
   tags:
     - spring
@@ -35,6 +35,12 @@ accelerator:
       defaultValue: "change-git-branch"
       required: true
       inputType: text
+    - name: supplyChain
+      label: Supply Chain Label
+      display: true
+      defaultValue: "web"
+      required: true
+      inputType: text
 engine:
   type: Chain
   transformations:
@@ -42,10 +48,12 @@ engine:
     patterns: ['**']
   - type: ReplaceText
     substitutions:
-      - text: change-app-name
+      - text: change-app
         with: "#appName"
       - text: change-app-package
         with: "#appName"
+      - text: change-supply-chain
+        with: "#supplyChain"
       - text: change-git-repo
         with: "#gitRepoName"
       - text: change-branch-name
@@ -54,3 +62,21 @@ engine:
         with: "#registryPath"
       - text: Change-App-Name-
         with: "#className"
+  - type: RewritePath
+    regex: src/main/java/com/example/change-app-package
+    rewriteTo: "src/main/java/com/example/#appName"
+  - type: RewritePath
+    regex: src/test/java/com/example/change-app-package
+    rewriteTo: "src/test/java/com/example/#appName"
+  - type: RewritePath
+    regex: src/main/java/com/example/#appName/Change-App-Name-Application.java
+    rewriteTo: src/main/java/com/example/#appName/ + #className + Application.java
+  - type: RewritePath
+    regex: src/main/java/com/example/#appName/Change-App-Name-Controller.java
+    rewriteTo: src/main/java/com/example/#appName/ + #className + Controller.java
+  - type: RewritePath
+    regex: src/test/java/com/example/#appName/Change-App-Name-Application.java
+    rewriteTo: src/main/java/com/example/#appName/ + #className + Application.java
+  - type: RewritePath
+    regex: src/test/java/com/example/#appName/Change-App-Name-Controller.java
+    rewriteTo: src/main/java/com/example/#appName/ + #className + Controller.java
